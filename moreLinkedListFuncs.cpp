@@ -54,7 +54,7 @@
    //   value of pointer to max element (first one if ties.)
    Node* cur = list->head;  
    int max = cur->data; 
-   Node *temp; 
+   Node *temp = cur;  
 
    while(cur != NULL){ 
       if((cur->data) > max){
@@ -87,7 +87,7 @@
    //   (first one such value that occurs if there are ties.)
    Node* cur = list->head;  
    int min = cur->data; 
-   Node *temp; 
+   Node *temp = cur;  
 
    while(cur != NULL){ 
       if((cur->data) < min){
