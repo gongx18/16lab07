@@ -2,39 +2,38 @@
  #include "linkedList.h"
  #include "linkedListFuncs.h"
 
+  //completed
+  void addIntToEndOfList(LinkedList *list, int value) {
+    assert(list != NULL);
 
-//completed
- void addIntToEndOfList(LinkedList *list, int value) {
-   assert(list != NULL); 
+    Node *p;
+    p-> data = value;
+    p-> next = NULL;   //what if I don't do this?
 
-   Node *p;  
-   p-> data = value; 
-   p-> next = NULL;   //what if I don't do this?
+    if(list->head == NULL && list->tail == NULL){
+       list->head = p;
+       list->tail = p;
+    }else{
+       list->tail->next = p;
+       list->tail = p;
+    }
+  }
 
-   if(list->head == NULL && list->tail == NULL){
-      list->head = p; 
-      list->tail = p; 
-   }else{
-      list->tail->next = p;
-      list->tail = p; 
-   }
- }
+ //completed
+  void addIntToStartOfList(LinkedList *list, int value) {
+    assert(list!=NULL); // if list is NULL, we can do nothing.
+    Node* p;
+    p->data = value;
+    p->next = NULL;
 
-//completed
- void addIntToStartOfList(LinkedList *list, int value) {
-   assert(list!=NULL); // if list is NULL, we can do nothing.
-   Node* p;
-   p->data = value;
-   p->next = NULL; 
-
-   if(list->head == NULL && list->tail == NULL){
-      list->head = p; 
-      list->tail = p;
-   }else{
-      p->next = list->head; 
-      list->head = p; 
-   }
- }
+    if(list->head == NULL && list->tail == NULL){
+       list->head = p;
+       list->tail = p;
+    }else{
+       p->next = list->head;
+       list->head = p;
+    }
+  }
 
  // list: ptr to a linked list of Node (each with int data, and Node * next)
  // Return a pointer to node with the largest value.
@@ -157,15 +156,17 @@
  int sum(LinkedList * list) {
    // Code may assume that these assertions are true;
    //  so does not need to do error checking for these conditions.
+     
+    assert(list!=NULL);
+    int sum = 0;
+    if(list->head==NULL)
+        return sum;
 
-   assert(list!=NULL);
+    else {
+        for(Node *p = list->head; p!=NULL; p = p->next){
+            sum+= p->data;
+        }
 
-   // TODO: Insert code here to calculate and return
-   //   sum of all values in list (0 if there are none).
-   int sum = 0; 
-   Node *cur = list->head; 
-   while(cur != NULL){
-      sum += cur->data; 
-   }
-   return sum; 
+   } 
+  return sum; 
  }
